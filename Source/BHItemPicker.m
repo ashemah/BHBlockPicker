@@ -6,21 +6,12 @@
 //
 //
 
-#import "BHBlockPicker.h"
+#import "BHItemPicker.h"
 
-#define kPickerHeight 216
-#define kNavBarHeight 44
-
-@implementation BHBlockPicker
+@implementation BHItemPicker
 
 + (id)pickerWithParentView:(UIView*)parentView {
-    return [[BHBlockPicker alloc] initWithParentView:parentView];
-}
-
-- (void)layoutSubviews {
-    // Move ourselves off the screen
-    self.frame = CGRectMake(0, self.superview.frame.size.height-_totalH, self.superview.frame.size.width, _totalH);
-    self.transform = CGAffineTransformMakeTranslation(0, _totalH);    
+    return [[BHItemPicker alloc] initWithParentView:parentView];
 }
 
 - (id)initWithParentView:(UIView*)parentView
@@ -92,6 +83,14 @@
     
     self.navBarForPicker(self, self.navItem);
     [self.pickerView reloadAllComponents];
+}
+
+- (void)internalSetupPicker {
+    
+    // Add the picker
+    self.pickerView         = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kNavBarHeight, self.pickerView.frame.size.width, self.pickerView.frame.size.height)];
+    self.pickerView.showsSelectionIndicator = YES;
+    [self addSubview:self.pickerView];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
