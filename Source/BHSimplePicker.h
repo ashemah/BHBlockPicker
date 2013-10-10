@@ -31,6 +31,7 @@ typedef void (^PickerSetupNavBarBlock)(BHSimplePicker *picker, UINavigationItem 
 - (id)initWithParentView:(UIView*)parentView;
 - (void)hidePicker;
 - (void)showPicker;
+- (void)showPickerWithAnimation:(BOOL)animate;
 - (void)refreshPicker;
 
 - (void)internalSetupPicker;

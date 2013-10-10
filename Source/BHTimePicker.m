@@ -18,6 +18,7 @@
     
     // Add the picker
     self.timePicker         = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, kNavBarHeight, self.timePicker.frame.size.width, self.timePicker.frame.size.height)];
+    
     [self addSubview:self.timePicker];
 }
 

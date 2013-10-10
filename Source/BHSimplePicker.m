@@ -64,11 +64,20 @@
 }
 
 - (void)showPicker {
+    [self showPickerWithAnimation:YES];
+}
+
+- (void)showPickerWithAnimation:(BOOL)animate {
     [self refreshPicker];
     
-    [UIView animateWithDuration:0.2 animations:^{
+    if (animate) {
+        [UIView animateWithDuration:0.2 animations:^{
+            self.transform = CGAffineTransformIdentity;
+        }];
+    }
+    else {
         self.transform = CGAffineTransformIdentity;
-    }];
+    }
 }
 
 - (void)refreshPicker {
